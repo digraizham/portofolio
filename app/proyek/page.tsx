@@ -32,7 +32,7 @@ export default function DetailProyek() {
             <div className="md:w-1/3">
               <h2 className="text-2xl font-bold text-white mb-2">Telehealth UNJ</h2>
               <p className="text-blue-400 font-medium mb-6 text-sm">Tahun: 2025</p>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 <div>
                   <h3 className="text-xs text-slate-500 uppercase tracking-widest mb-3">Tautan Proyek</h3>
                   <div className="flex flex-col gap-3">
@@ -41,6 +41,10 @@ export default function DetailProyek() {
                       <span className="text-xs text-slate-500">↗</span>
                     </a>
                   </div>
+                </div>
+                <div>
+                  <h3 className="text-xs text-slate-500 uppercase tracking-widest mb-2">Peran Saya</h3>
+                  <p className="text-sm text-slate-300">Fullstack Web Developer</p>
                 </div>
                 <div>
                   <h3 className="text-xs text-slate-500 uppercase tracking-widest mb-2">Teknologi</h3>
@@ -73,7 +77,7 @@ export default function DetailProyek() {
             <div className="md:w-1/3">
               <h2 className="text-2xl font-bold text-white mb-2">Collagen App</h2>
               <p className="text-blue-400 font-medium mb-6 text-sm">Tahun: 2022 - 2023</p>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 <div>
                   <h3 className="text-xs text-slate-500 uppercase tracking-widest mb-3">Tautan Proyek</h3>
                   <div className="flex flex-col gap-3">
@@ -82,6 +86,10 @@ export default function DetailProyek() {
                       <span className="text-xs text-slate-500">↗</span>
                     </a>
                   </div>
+                </div>
+                <div>
+                  <h3 className="text-xs text-slate-500 uppercase tracking-widest mb-2">Peran Saya</h3>
+                  <p className="text-sm text-slate-300">Frontend / UI Developer</p>
                 </div>
                 <div>
                   <h3 className="text-xs text-slate-500 uppercase tracking-widest mb-2">Teknologi</h3>
@@ -113,7 +121,7 @@ export default function DetailProyek() {
             <div className="md:w-1/3">
               <h2 className="text-2xl font-bold text-white mb-2">KingDesign</h2>
               <p className="text-blue-400 font-medium mb-6 text-sm">Tahun: 2023</p>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 <div>
                   <h3 className="text-xs text-slate-500 uppercase tracking-widest mb-3">Tautan Proyek</h3>
                   <div className="flex flex-col gap-3">
@@ -126,6 +134,10 @@ export default function DetailProyek() {
                       <span className="text-xs text-slate-500">↗</span>
                     </a>
                   </div>
+                </div>
+                <div>
+                  <h3 className="text-xs text-slate-500 uppercase tracking-widest mb-2">Peran Saya</h3>
+                  <p className="text-sm text-slate-300">Web Developer & Business Planner</p>
                 </div>
                 <div>
                   <h3 className="text-xs text-slate-500 uppercase tracking-widest mb-2">Teknologi</h3>

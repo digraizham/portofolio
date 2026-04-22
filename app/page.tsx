@@ -45,7 +45,7 @@ export default function DarkPortfolio() {
 
             <h1 className="text-xl md:text-3xl lg:text-5xl font-extrabold text-white tracking-tight mb-6 leading-tight">
               Hi, Saya <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Digra Murtaza Izham</span>
+              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Digra Murtaza Izham</span>
             </h1>
 
             <p className="text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed mb-10 mx-auto md:mx-0">

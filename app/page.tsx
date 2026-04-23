@@ -1,32 +1,78 @@
-import React from "react";
+"use client";
+
+import React, { useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function DarkPortfolio() {
+  // State untuk mengontrol buka/tutup menu di layar HP
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Fungsi untuk mengubah status menu
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   return (
     <main className="min-h-screen bg-slate-950 text-slate-300 font-sans selection:bg-blue-500/30">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Image src="/Logo_nav.PNG" alt="Logo Digra" width={40} height={40} className="rounded-lg" />
+          <Image
+            src="/Logo_nav.PNG" 
+            alt="Logo Digra"
+            width={40}
+            height={40}
+            className="rounded-lg"
+          />
+          
+          {/* Tombol Hamburger (Mobile) */}
+          <button 
+            onClick={toggleMenu}
+            className="md:hidden p-2 text-slate-400 hover:text-white transition-colors"
+            aria-label="Toggle Menu"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {isMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+
+          {/* Desktop Menu */}
           <div className="hidden md:flex gap-8 text-sm font-medium">
-            <a href="#about" className="hover:text-blue-400 transition-colors">
-              Tentang
-            </a>
-            <a href="#experience" className="hover:text-blue-400 transition-colors">
-              Pengalaman
-            </a>
-            <a href="#projects" className="hover:text-blue-400 transition-colors">
-              Proyek
-            </a>
-            <a href="#credentials" className="hover:text-blue-400 transition-colors">
-              Kredensial
-            </a>
-            <a href="#contact" className="hover:text-blue-400 transition-colors">
-              Kontak
-            </a>
+            <a href="#about" className="hover:text-blue-400 transition-colors text-xs md:text-sm">Tentang</a>
+            <a href="#experience" className="hover:text-blue-400 transition-colors text-xs md:text-sm">Pengalaman</a>
+            <a href="#projects" className="hover:text-blue-400 transition-colors text-xs md:text-sm">Proyek</a>
+            <a href="#credentials" className="hover:text-blue-400 transition-colors text-xs md:text-sm">Kredensial</a>
+            <a href="#training" className="hover:text-blue-400 transition-colors text-xs md:text-sm">Pelatihan</a>
+            <a href="#contact" className="hover:text-blue-400 transition-colors text-xs md:text-sm">Kontak</a>
           </div>
         </div>
+
+        {/* Mobile Menu Dropdown dengan Animasi Framer Motion */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="md:hidden overflow-hidden bg-slate-900 border-b border-slate-800"
+            >
+              <div className="flex flex-col px-6 py-4 space-y-4 text-sm font-medium">
+                {/* Tambahkan event onClick={toggleMenu} agar menu otomatis tertutup saat link ditekan */}
+                <a href="#about" onClick={toggleMenu} className="text-slate-300 hover:text-blue-400 transition-colors">Tentang</a>
+                <a href="#experience" onClick={toggleMenu} className="text-slate-300 hover:text-blue-400 transition-colors">Pengalaman</a>
+                <a href="#projects" onClick={toggleMenu} className="text-slate-300 hover:text-blue-400 transition-colors">Proyek</a>
+                <a href="#credentials" onClick={toggleMenu} className="text-slate-300 hover:text-blue-400 transition-colors">Kredensial</a>
+                <a href="#training" onClick={toggleMenu} className="text-slate-300 hover:text-blue-400 transition-colors">Pelatihan</a>
+                <a href="#contact" onClick={toggleMenu} className="text-slate-300 hover:text-blue-400 transition-colors">Kontak</a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       {/* --- HERO SECTION REDESIGN --- */}
@@ -49,8 +95,10 @@ export default function DarkPortfolio() {
             </h1>
 
             <p className="text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed mb-10 mx-auto md:mx-0">
-              Lulusan S1 Ilmu Komputer dari Universitas Negeri Jakarta. Memiliki spesialisasi dalam pengembangan sistem informasi menggunakan arsitektur{" "}
-              <span className="text-blue-400 font-semibold">Laravel</span> untuk solusi terintegrasi serta pengelolaan infrastruktur IT.
+              Lulusan S1 Ilmu Komputer Universitas Negeri Jakarta. Berpengalaman dalam operasional{" "}
+              <span className="text-blue-400 font-semibold">IT Support</span> serta pengembangan perangkat lunak web dan mobile. Menguasai ekosistem{" "}
+              <span className="text-blue-400 font-semibold">Laravel, PHP, Python, dan MySQL</span> dengan target karier sebagai{" "}
+              <span className="text-blue-400 font-semibold">Web Developer</span> maupun <span className="text-blue-400 font-semibold">Data Analyst</span>.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
@@ -123,7 +171,7 @@ export default function DarkPortfolio() {
             <div className="flex-grow">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-1">IT Support</h3>
+                  <h3 className="text-2xl font-bold text-white mb-1">IT Support Intern</h3>
                   <p className="text-blue-400 font-medium tracking-wide mb-2">Komisi Informasi DKI Jakarta</p>
 
                   <a
@@ -169,7 +217,7 @@ export default function DarkPortfolio() {
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex justify-between items-end mb-12">
             <h2 className="text-3xl font-bold text-white flex items-center gap-4">
-              <span className="w-8 h-px bg-blue-500"></span> Proyek Terpilih
+              <span className="w-8 h-px bg-blue-500"></span> Pengalaman Proyek
             </h2>
             <Link href="/proyek" className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors group flex items-center gap-2">
               Detail Proyek <span className="group-hover:translate-x-1 transition-transform">→</span>
@@ -217,9 +265,16 @@ export default function DarkPortfolio() {
                   <br />
                   Diterbitkan: 20 Desember 2025
                 </p>
-                <p className="text-slate-500 text-xs leading-relaxed">
-                  Valid for 6 Months
-                </p>
+                <p className="text-slate-500 text-xs leading-relaxed">Valid for 6 Months</p>
+                <a
+                  href="https://drive.google.com/file/d/137EJPf7UzluLo0IK_S3VM_ObSAM3tOCw/view"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs text-blue-400 hover:text-blue-300 transition-colors group/cert"
+                >
+                  <span className="font-medium underline underline-offset-4">Lihat Sertifikat</span>
+                  <span className="text-[10px] group-hover/cert:translate-x-0.5 transition-transform">↗</span>
+                </a>
               </div>
               <div className="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between">
                 <span className="text-[10px] text-slate-500 uppercase tracking-[0.2em]">Score Prediction</span>
@@ -252,6 +307,51 @@ export default function DarkPortfolio() {
         </div>
       </section>
 
+      {/* --- PELATIHAN SECTION (NEW) --- */}
+      <section id="training" className="max-w-5xl mx-auto px-6 py-12 border-t border-slate-900/50">
+        <div className="flex justify-between items-end mb-12">
+          <h2 className="text-3xl font-bold text-white flex items-center gap-4">
+            <span className="w-8 h-px bg-blue-500"></span> Pelatihan
+          </h2>
+          <Link href="/pelatihan" className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors group flex items-center gap-2">
+            Detail Tugas <span className="group-hover:translate-x-1 transition-transform">→</span>
+          </Link>
+        </div>
+
+        <div className="p-8 rounded-3xl bg-slate-900/40 border border-slate-800 backdrop-blur-sm relative overflow-hidden group">
+          {/* Efek Cahaya Halus */}
+          <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-600/5 rounded-full blur-3xl group-hover:bg-blue-600/10 transition-colors pointer-events-none"></div>
+
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
+            <div className="flex gap-6 items-start">
+              <div className="w-14 h-14 rounded-2xl bg-white border border-slate-700 flex items-center justify-center flex-shrink-0 shadow-inner overflow-hidden p-1">
+                <Image src="/MySkill-logo.png" alt="MySkill Logo" width={40} height={40} className="object-contain" />
+              </div>
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <h3 className="text-xl md:text-2xl font-bold text-white leading-tight hover:text-blue-400 transition-colors">
+                    <Link href="/pelatihan">DATA ANALYSIS: FULLSTACK INTENSIVE BOOTCAMP</Link>
+                  </h3>
+                </div>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <p className="text-slate-400 text-sm font-medium flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-600"></span>8 April 2026 — 29 Mei 2026
+                  </p>
+                  <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-bold uppercase tracking-wider flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                    Ongoing Course
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 grid md:grid-cols-1 gap-4 pt-6 border-t border-slate-800/50 text-slate-500 text-xs italic">
+            * Pelatihan intensif mencakup pengolahan data, visualisasi, dan pemecahan masalah berbasis data berskala penuh.
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer id="contact" className="max-w-5xl mx-auto px-6 py-20 border-t border-slate-900 text-center">
         <h2 className="text-2xl font-bold text-white mb-8">Hubungi Saya</h2>
@@ -275,12 +375,7 @@ export default function DarkPortfolio() {
           >
             Instagram
           </a>
-          <a 
-            href="https://wa.me/087787211504" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-slate-400 hover:text-white transition-colors text-sm"
-          >
+          <a href="https://wa.me/087787211504" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors text-sm">
             Phone Number
           </a>
         </div>

@@ -105,7 +105,17 @@ export default function DarkPortfolio() {
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
               Hi, Saya <br className="hidden md:block" />
-              <span className="text-4xl md:text-5xl lg:text-6xl inline-block bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Digra Murtaza Izham</span>
+              <span
+                className="text-4xl md:text-5xl lg:text-6xl block w-fit pb-1"
+                style={{
+                  background: "linear-gradient(to right, #60a5fa, #22d3ee)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  color: "#60a5fa" 
+                }}
+              >
+                Digra Murtaza Izham
+              </span>
             </h1>
 
             <p className="text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed mb-10 mx-auto md:mx-0">

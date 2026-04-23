@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -17,20 +17,10 @@ export default function DarkPortfolio() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Image
-            src="/Logo_nav.PNG" 
-            alt="Logo Digra"
-            width={40}
-            height={40}
-            className="rounded-lg"
-          />
-          
+          <Image src="/Logo_nav.PNG" alt="Logo Digra" width={40} height={40} className="rounded-lg" />
+
           {/* Tombol Hamburger (Mobile) */}
-          <button 
-            onClick={toggleMenu}
-            className="md:hidden p-2 text-slate-400 hover:text-white transition-colors"
-            aria-label="Toggle Menu"
-          >
+          <button onClick={toggleMenu} className="md:hidden p-2 text-slate-400 hover:text-white transition-colors" aria-label="Toggle Menu">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -42,12 +32,24 @@ export default function DarkPortfolio() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-8 text-sm font-medium">
-            <a href="#about" className="hover:text-blue-400 transition-colors text-xs md:text-sm">Tentang</a>
-            <a href="#experience" className="hover:text-blue-400 transition-colors text-xs md:text-sm">Pengalaman</a>
-            <a href="#projects" className="hover:text-blue-400 transition-colors text-xs md:text-sm">Proyek</a>
-            <a href="#credentials" className="hover:text-blue-400 transition-colors text-xs md:text-sm">Kredensial</a>
-            <a href="#training" className="hover:text-blue-400 transition-colors text-xs md:text-sm">Pelatihan</a>
-            <a href="#contact" className="hover:text-blue-400 transition-colors text-xs md:text-sm">Kontak</a>
+            <Link href="#about" className="hover:text-blue-400 transition-colors text-xs md:text-sm">
+              Tentang
+            </Link>
+            <Link href="#experience" className="hover:text-blue-400 transition-colors text-xs md:text-sm">
+              Pengalaman
+            </Link>
+            <Link href="#projects" className="hover:text-blue-400 transition-colors text-xs md:text-sm">
+              Proyek
+            </Link>
+            <Link href="#credentials" className="hover:text-blue-400 transition-colors text-xs md:text-sm">
+              Kredensial
+            </Link>
+            <Link href="#training" className="hover:text-blue-400 transition-colors text-xs md:text-sm">
+              Pelatihan
+            </Link>
+            <Link href="#contact" className="hover:text-blue-400 transition-colors text-xs md:text-sm">
+              Kontak
+            </Link>
           </div>
         </div>
 
@@ -62,13 +64,25 @@ export default function DarkPortfolio() {
               className="md:hidden overflow-hidden bg-slate-900 border-b border-slate-800"
             >
               <div className="flex flex-col px-6 py-4 space-y-4 text-sm font-medium">
-                {/* Tambahkan event onClick={toggleMenu} agar menu otomatis tertutup saat link ditekan */}
-                <a href="#about" onClick={toggleMenu} className="text-slate-300 hover:text-blue-400 transition-colors">Tentang</a>
-                <a href="#experience" onClick={toggleMenu} className="text-slate-300 hover:text-blue-400 transition-colors">Pengalaman</a>
-                <a href="#projects" onClick={toggleMenu} className="text-slate-300 hover:text-blue-400 transition-colors">Proyek</a>
-                <a href="#credentials" onClick={toggleMenu} className="text-slate-300 hover:text-blue-400 transition-colors">Kredensial</a>
-                <a href="#training" onClick={toggleMenu} className="text-slate-300 hover:text-blue-400 transition-colors">Pelatihan</a>
-                <a href="#contact" onClick={toggleMenu} className="text-slate-300 hover:text-blue-400 transition-colors">Kontak</a>
+                {/* Menggunakan <Link> Next.js dengan onClick terpisah */}
+                <Link href="#about" onClick={() => setIsMenuOpen(false)} className="text-slate-300 hover:text-blue-400 transition-colors block py-2">
+                  Tentang
+                </Link>
+                <Link href="#experience" onClick={() => setIsMenuOpen(false)} className="text-slate-300 hover:text-blue-400 transition-colors block py-2">
+                  Pengalaman
+                </Link>
+                <Link href="#projects" onClick={() => setIsMenuOpen(false)} className="text-slate-300 hover:text-blue-400 transition-colors block py-2">
+                  Proyek
+                </Link>
+                <Link href="#credentials" onClick={() => setIsMenuOpen(false)} className="text-slate-300 hover:text-blue-400 transition-colors block py-2">
+                  Kredensial
+                </Link>
+                <Link href="#training" onClick={() => setIsMenuOpen(false)} className="text-slate-300 hover:text-blue-400 transition-colors block py-2">
+                  Pelatihan
+                </Link>
+                <Link href="#contact" onClick={() => setIsMenuOpen(false)} className="text-slate-300 hover:text-blue-400 transition-colors block py-2">
+                  Kontak
+                </Link>
               </div>
             </motion.div>
           )}
@@ -89,9 +103,9 @@ export default function DarkPortfolio() {
               <span className="text-slate-300 tracking-wide uppercase">Tersedia untuk Kolaborasi</span>
             </div>
 
-            <h1 className="text-xl md:text-3xl lg:text-5xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
               Hi, Saya <br className="hidden md:block" />
-              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Digra Murtaza Izham</span>
+              <span className="text-4xl md:text-5xl lg:text-6xl inline-block text-gradient-fix bg-gradient-to-r from-blue-400 to-cyan-400">Digra Murtaza Izham</span>
             </h1>
 
             <p className="text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed mb-10 mx-auto md:mx-0">

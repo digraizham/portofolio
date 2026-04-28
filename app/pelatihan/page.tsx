@@ -38,6 +38,24 @@ export default function DetailPelatihan() {
       link: 'https://docs.google.com/presentation/d/1CY8c12VUD-mQIyMa_0Zz21nwpxolIuFU/edit?usp=sharing&ouid=106810007812957132184&rtpof=true&sd=true',
       icon: '📑',
       color: 'text-yellow-400'
+    },
+    {
+      sesi: 'Sesi 8',
+      title: 'Jawaban Minitask Sesi 8',
+      format: 'Google Slides',
+      desc: 'Praktik dan penugasan lanjutan terkait analisis data dan pembuatan laporan presentasi.',
+      link: 'https://docs.google.com/presentation/d/1iV15PzOx3EHtQxqGBNyCoU96N1oAHwfW/edit?usp=sharing&ouid=106810007812957132184&rtpof=true&sd=true',
+      icon: '📽️',
+      color: 'text-yellow-400'
+    },
+    {
+      sesi: 'Sesi 9',
+      title: 'Jawaban Minitask Sesi 9',
+      format: 'Google Slides',
+      desc: 'Penyusunan deck presentasi akhir dan penyampaian hasil analisis secara efektif.',
+      link: 'https://docs.google.com/presentation/d/1Qx9jYdw-0Ps0cPBuOj3-HmlZx6jNtZbX/edit?usp=sharing&ouid=106810007812957132184&rtpof=true&sd=true',
+      icon: '📑',
+      color: 'text-yellow-400'
     }
   ];
 

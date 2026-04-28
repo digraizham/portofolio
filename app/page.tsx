@@ -15,7 +15,7 @@ export default function DarkPortfolio() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-300 font-sans selection:bg-blue-500/30">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+      <nav className="sticky top-0 z-50 fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
           <Image src="/Logo_nav.PNG" alt="Logo Digra" width={40} height={40} className="rounded-lg" />
 
@@ -90,7 +90,7 @@ export default function DarkPortfolio() {
       </nav>
 
       {/* --- HERO SECTION REDESIGN --- */}
-      <section id="about" className="relative max-w-5xl mx-auto px-6 pt-32 pb-24 lg:pt-40 lg:pb-32">
+      <section id="about" className="relative max-w-5xl mx-auto px-6 pt-32 pb-18 lg:pt-40 lg:pb-32">
         {/* Dekorasi Cahaya Latar Belakang */}
         <div className="absolute top-20 left-0 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
         <div className="absolute bottom-0 right-10 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
@@ -111,7 +111,7 @@ export default function DarkPortfolio() {
                   background: "linear-gradient(to right, #60a5fa, #22d3ee)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
-                  color: "#60a5fa" 
+                  color: "#60a5fa",
                 }}
               >
                 Digra Murtaza Izham
@@ -164,7 +164,7 @@ export default function DarkPortfolio() {
       {/* --- END HERO SECTION --- */}
 
       {/* Tech Stack Grid */}
-      <section className="max-w-5xl mx-auto px-6 py-6">
+      <section className="max-w-5xl mx-auto px-6 py-3">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { label: "Backend & Frontend", value: "Laravel (Fullstack)" },
@@ -317,10 +317,20 @@ export default function DarkPortfolio() {
                   🏛️
                 </div>
                 <h3 className="text-xl font-bold text-white mb-1">Universitas Negeri Jakarta</h3>
-                <p className="text-blue-400 font-medium text-sm mb-6">Sarjana Ilmu Komputer</p>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  Fokus utama pada rekayasa perangkat lunak, sistem informasi kesehatan, dan manajemen basis data.
+                <p className="text-blue-400 font-medium text-sm mb-4">Sarjana Ilmu Komputer</p>
+                <p className="text-slate-500 text-xs leading-relaxed">
+                  Fokus utama belajar pengembangan web fullstack dengan Laravel, serta pemrograman Python untuk analisis data. Aktif dalam proyek
+                  pengembangan perangkat lunak dan penelitian akademis terkait teknologi informasi.
                 </p>
+                <a
+                  href="https://drive.google.com/file/d/1W-0BVraDHoE7V_6-7okawvTRIzLwduEi/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs text-blue-400 hover:text-blue-300 transition-colors group/cert"
+                >
+                  <span className="font-medium underline underline-offset-4">Lihat Ijazah</span>
+                  <span className="text-[10px] group-hover/cert:translate-x-0.5 transition-transform">↗</span>
+                </a>
               </div>
               <div className="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between">
                 <span className="text-[10px] text-slate-500 uppercase tracking-[0.2em]">Lulus April 2026</span>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,6 +11,16 @@ export default function DarkPortfolio() {
 
   // Fungsi untuk mengubah status menu
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollCarousel = (direction: "left" | "right") => {
+    if (carouselRef.current) {
+      // Menentukan seberapa jauh carousel bergeser (sekitar 1 kartu + gap)
+      const scrollAmount = direction === "left" ? -360 : 360;
+      carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-300 font-sans selection:bg-blue-500/30">
@@ -40,6 +50,9 @@ export default function DarkPortfolio() {
             </Link>
             <Link href="#projects" className="hover:text-blue-400 transition-colors text-xs md:text-sm">
               Proyek
+            </Link>
+            <Link href="#certificates" className="hover:text-blue-400 transition-colors text-xs md:text-sm">
+              Sertifikat
             </Link>
             <Link href="#credentials" className="hover:text-blue-400 transition-colors text-xs md:text-sm">
               Kredensial
@@ -181,7 +194,7 @@ export default function DarkPortfolio() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="max-w-5xl mx-auto px-6 py-24">
+      <section id="experience" className="max-w-5xl mx-auto px-6 py-10">
         <h2 className="text-3xl font-bold text-white mb-12 flex items-center gap-4">
           <span className="w-8 h-px bg-blue-500"></span> Pengalaman Profesional
         </h2>
@@ -237,7 +250,7 @@ export default function DarkPortfolio() {
       </section>
 
       {/* Projects Grid */}
-      <section id="projects" className="bg-slate-900/30 py-24 border-y border-slate-900">
+      <section id="projects" className="bg-slate-900/30 py-10 border-y border-slate-900">
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex justify-between items-end mb-12">
             <h2 className="text-3xl font-bold text-white flex items-center gap-4">
@@ -270,71 +283,205 @@ export default function DarkPortfolio() {
         </div>
       </section>
 
-      {/* Credentials Section */}
-      <section id="credentials" className="max-w-5xl mx-auto px-6 py-24">
-        <div className="grid md:grid-cols-2 gap-8 items-stretch">
-          <div className="flex flex-col">
-            <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-4">
-              <span className="w-8 h-px bg-blue-500"></span> Sertifikasi
-            </h2>
-            <div className="flex-grow p-8 rounded-2xl bg-slate-900/50 border border-slate-800 flex flex-col justify-between backdrop-blur-sm">
+      {/* --- SERTIFIKAT SECTION (CAROUSEL DENGAN NAVIGASI) --- */}
+      <section id="certificates" className="max-w-5xl mx-auto px-6 py-10 border-t border-slate-900/50 overflow-hidden">
+        <div className="flex justify-between items-end mb-8 md:mb-12">
+          <h2 className="text-3xl font-bold text-white flex items-center gap-4">
+            <span className="w-8 h-px bg-blue-500"></span> Sertifikasi Profesi
+          </h2>
+
+          {/* Tombol Navigasi Desktop */}
+          <div className="hidden md:flex gap-3">
+            <button
+              onClick={() => scrollCarousel("left")}
+              className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 hover:border-slate-700 hover:shadow-lg hover:shadow-blue-900/20 transition-all flex items-center justify-center group"
+              aria-label="Geser Kiri"
+            >
+              <svg className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={() => scrollCarousel("right")}
+              className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 hover:border-slate-700 hover:shadow-lg hover:shadow-blue-900/20 transition-all flex items-center justify-center group"
+              aria-label="Geser Kanan"
+            >
+              <svg className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Petunjuk Geser untuk Mobile (Kecil) */}
+        <div className="md:hidden flex justify-end mb-4 animate-pulse">
+          <span className="text-xs text-slate-500 italic">Geser kartu untuk melihat semua →</span>
+        </div>
+
+        {/* Carousel Container - PENTING: Tambahkan ref={carouselRef} di sini */}
+        <div
+          ref={carouselRef}
+          className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth"
+        >
+          {[
+            {
+              title: "SQL (Intermediate)",
+              issuer: "HackerRank",
+              date: "7 Mei 2026",
+              id: "e2a00482e0b2",
+              link: "https://www.hackerrank.com/certificates/e2a00482e0b2",
+              icon: "🥇",
+              tags: ["Complex Joins", "Subqueries", "Optimization"],
+            },
+            {
+              title: "SQL (Basic)",
+              issuer: "HackerRank",
+              date: "7 Mei 2026",
+              id: "f9a853e5f239",
+              link: "https://www.hackerrank.com/certificates/f9a853e5f239",
+              icon: "🥈",
+              tags: ["Queries", "Aggregation", "Data Types"],
+            },
+            {
+              title: "LOT EPT (TOEFL Prediction)",
+              issuer: "Lembaga Bahasa LIA",
+              date: "20 Desember 2025",
+              id: "00063/LOT EPT-10/12/2025/BGR",
+              link: "https://drive.google.com/file/d/137EJPf7UzluLo0IK_S3VM_ObSAM3tOCw/view",
+              icon: "🗣️",
+              tags: ["Score: 520", "English Proficiency"],
+            },
+          ].map((cert, i) => (
+            <div
+              key={i}
+              className="min-w-[85vw] sm:min-w-[340px] flex-shrink-0 snap-center p-8 rounded-3xl bg-slate-900/40 border border-slate-800 flex flex-col justify-between backdrop-blur-sm hover:border-blue-500/50 transition-all shadow-lg hover:shadow-blue-900/20 group"
+            >
               <div>
-                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-2xl mb-4 border border-blue-500/20">
-                  🎓
+                <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-3xl mb-6 border border-blue-500/20 group-hover:scale-110 transition-transform">
+                  {cert.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-1">LOT EPT (TOEFL Prediction)</h3>
-                <p className="text-blue-400 font-medium text-sm mb-4">Lembaga Bahasa LIA</p>
-                <p className="text-slate-500 text-xs leading-relaxed">
-                  Certificate No. 00063/LOT EPT-10/12/2025/BGR
-                  <br />
-                  Diterbitkan: 20 Desember 2025
-                </p>
-                <p className="text-slate-500 text-xs leading-relaxed">Valid for 6 Months</p>
+                <h3 className="text-xl font-bold text-white mb-2">{cert.title}</h3>
+                <p className="text-blue-400 font-medium text-sm mb-5">{cert.issuer}</p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {cert.tags.map((tag) => (
+                    <span key={tag} className="text-[10px] px-2 py-1 bg-slate-950 rounded-md text-slate-400 border border-slate-800">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="text-slate-500 text-xs leading-relaxed space-y-1">
+                  <p>
+                    ID: <span className="font-mono text-slate-400">{cert.id}</span>
+                  </p>
+                  <p>
+                    Diterbitkan: <span className="text-slate-400">{cert.date}</span>
+                  </p>
+                </div>
+              </div>
+              <div className="mt-8 pt-6 border-t border-slate-800/50">
                 <a
-                  href="https://drive.google.com/file/d/137EJPf7UzluLo0IK_S3VM_ObSAM3tOCw/view"
+                  href={cert.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs text-blue-400 hover:text-blue-300 transition-colors group/cert"
+                  className="inline-flex w-full justify-center items-center gap-2 text-sm font-semibold px-4 py-3 bg-slate-950 hover:bg-blue-600 text-slate-300 hover:text-white border border-slate-800 hover:border-blue-500 rounded-xl transition-all group/cert"
                 >
-                  <span className="font-medium underline underline-offset-4">Lihat Sertifikat</span>
-                  <span className="text-[10px] group-hover/cert:translate-x-0.5 transition-transform">↗</span>
+                  <span>Validasi Sertifikat</span>
+                  <span className="text-[10px] group-hover/cert:translate-x-1 group-hover/cert:-translate-y-1 transition-transform">↗</span>
                 </a>
               </div>
-              <div className="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between">
-                <span className="text-[10px] text-slate-500 uppercase tracking-[0.2em]">Score Prediction</span>
-                <span className="text-3xl font-bold text-white">520</span>
-              </div>
             </div>
-          </div>
+          ))}
+        </div>
+      </section>
 
-          <div className="flex flex-col">
-            <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-4">
-              <span className="w-8 h-px bg-blue-500"></span> Pendidikan
-            </h2>
-            <div className="flex-grow p-8 rounded-2xl bg-slate-900/50 border border-slate-800 flex flex-col justify-between backdrop-blur-sm">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-2xl mb-4 border border-blue-500/20">
-                  🏛️
+      {/* --- PENDIDIKAN SECTION (REDESIGNED) --- */}
+      <section id="credentials" className="max-w-5xl mx-auto px-6 py-10 border-t border-slate-900/50">
+        <h2 className="text-3xl font-bold text-white mb-12 flex items-center gap-4">
+          <span className="w-8 h-px bg-blue-500"></span> Latar Belakang Pendidikan
+        </h2>
+
+        <div className="relative group overflow-hidden p-px rounded-3xl bg-gradient-to-br from-slate-700 to-transparent">
+          <div className="relative p-8 md:p-12 rounded-3xl bg-slate-950 flex flex-col lg:flex-row gap-12 items-start">
+            {/* Sisi Kiri: Branding Kampus */}
+            <div className="flex-shrink-0 w-full lg:w-1/3">
+              <div className="w-20 h-20 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-4xl mb-6 border border-blue-500/20 shadow-inner">
+                🏛️
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2">Universitas Negeri Jakarta</h3>
+              <p className="text-blue-400 font-semibold text-lg mb-6 tracking-wide">Sarjana Ilmu Komputer</p>
+
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-mono text-slate-500 uppercase tracking-widest">Lulus:</span>
+                  <span className="text-sm text-slate-300 font-medium">April 2026</span>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-1">Universitas Negeri Jakarta</h3>
-                <p className="text-blue-400 font-medium text-sm mb-4">Sarjana Ilmu Komputer</p>
-                <p className="text-slate-500 text-xs leading-relaxed">
-                  Fokus utama belajar pengembangan web fullstack dengan Laravel, serta pemrograman Python untuk analisis data. Aktif dalam proyek
-                  pengembangan perangkat lunak dan penelitian akademis terkait teknologi informasi.
-                </p>
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-mono text-slate-500 uppercase tracking-widest">IPK:</span>
+                  <div className="px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-lg">
+                    <span className="text-green-400 font-bold">3.62 / 4.00</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8">
                 <a
                   href="https://drive.google.com/file/d/1W-0BVraDHoE7V_6-7okawvTRIzLwduEi/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs text-blue-400 hover:text-blue-300 transition-colors group/cert"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-white px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl transition-all shadow-lg shadow-blue-600/20 group/btn"
                 >
-                  <span className="font-medium underline underline-offset-4">Lihat Ijazah</span>
-                  <span className="text-[10px] group-hover/cert:translate-x-0.5 transition-transform">↗</span>
+                  <span>Lihat Ijazah</span>
+                  <span className="text-xs group-hover/btn:translate-x-1 transition-transform">↗</span>
                 </a>
               </div>
-              <div className="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between">
-                <span className="text-[10px] text-slate-500 uppercase tracking-[0.2em]">Lulus April 2026</span>
-                <span className="text-3xl font-bold text-white">3.62</span>
+            </div>
+
+            {/* Sisi Kanan: Fokus Akademik & Skripsi */}
+            <div className="flex-grow w-full border-t lg:border-t-0 lg:border-l border-slate-800 lg:pl-12 pt-8 lg:pt-0">
+              <h4 className="text-[10px] font-bold text-blue-500 uppercase tracking-[0.2em] mb-6">Fokus Akademik & Penelitian</h4>
+
+              <div className="space-y-8">
+                <div>
+                  <h5 className="text-white font-bold mb-3 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                    Skripsi / Tugas Akhir
+                  </h5>
+                  <div className="p-5 rounded-2xl bg-slate-900/50 border border-slate-800 italic leading-relaxed">
+                    <p className="text-slate-300 text-sm md:text-base mb-2">
+                      "Rancang Bangun Modul Manajemen Rekam Medis Elektronik untuk Neonatus dalam Sistem Informasi Telehealth Berbasis Website"
+                    </p>
+                    <p className="text-slate-500 text-xs not-italic">
+                      Fokus pada pengembangan sistem manajemen data medis yang aman dan efisien menggunakan Laravel, bertujuan mendigitalisasi pemantauan
+                      kesehatan bayi baru lahir secara real-time.
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <h5 className="text-white font-bold mb-3 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                    Kompetensi Relevan Selama Kuliah
+                  </h5>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Fullstack Development (Laravel)",
+                      "Database Design (MySQL)",
+                      "Python for Data Analysis",
+                      "Mobile Framework (Flutter)",
+                      "Systems Analysis",
+                      "UI/UX Design",
+                    ].map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1.5 bg-slate-900 rounded-lg text-slate-400 text-xs border border-slate-800 hover:text-blue-400 transition-colors"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

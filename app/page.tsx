@@ -318,19 +318,28 @@ export default function DarkPortfolio() {
           <span className="text-xs text-slate-500 italic">Geser kartu untuk melihat semua →</span>
         </div>
 
-        {/* Carousel Container - PENTING: Tambahkan ref={carouselRef} di sini */}
+        {/* Carousel Container */}
         <div
           ref={carouselRef}
           className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth"
         >
           {[
             {
+              title: "SQL (Advanced)",
+              issuer: "HackerRank",
+              date: "8 Mei 2026",
+              id: "260B6A6A3F2F",
+              link: "https://www.hackerrank.com/certificates/260B6A6A3F2F",
+              logo: "https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png",
+              tags: ["Advanced Queries", "Window Functions", "Query Optimization"],
+            },
+            {
               title: "SQL (Intermediate)",
               issuer: "HackerRank",
               date: "7 Mei 2026",
               id: "e2a00482e0b2",
               link: "https://www.hackerrank.com/certificates/e2a00482e0b2",
-              icon: "🥇",
+              logo: "https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png",
               tags: ["Complex Joins", "Subqueries", "Optimization"],
             },
             {
@@ -339,7 +348,7 @@ export default function DarkPortfolio() {
               date: "7 Mei 2026",
               id: "f9a853e5f239",
               link: "https://www.hackerrank.com/certificates/f9a853e5f239",
-              icon: "🥈",
+              logo: "https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png",
               tags: ["Queries", "Aggregation", "Data Types"],
             },
             {
@@ -348,7 +357,7 @@ export default function DarkPortfolio() {
               date: "20 Desember 2025",
               id: "00063/LOT EPT-10/12/2025/BGR",
               link: "https://drive.google.com/file/d/137EJPf7UzluLo0IK_S3VM_ObSAM3tOCw/view",
-              icon: "🗣️",
+              logo: "https://i0.wp.com/liayogyakarta.com/wp-content/uploads/2019/12/logo-lia.webp",
               tags: ["Score: 520", "English Proficiency"],
             },
           ].map((cert, i) => (
@@ -357,8 +366,8 @@ export default function DarkPortfolio() {
               className="min-w-[85vw] sm:min-w-[340px] flex-shrink-0 snap-center p-8 rounded-3xl bg-slate-900/40 border border-slate-800 flex flex-col justify-between backdrop-blur-sm hover:border-blue-500/50 transition-all shadow-lg hover:shadow-blue-900/20 group"
             >
               <div>
-                <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-3xl mb-6 border border-blue-500/20 group-hover:scale-110 transition-transform">
-                  {cert.icon}
+                <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 border border-slate-700 group-hover:scale-110 transition-transform shadow-inner p-2 overflow-hidden">
+                  <Image src={cert.logo} alt={cert.issuer} width={48} height={48} className="object-contain" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">{cert.title}</h3>
                 <p className="text-blue-400 font-medium text-sm mb-5">{cert.issuer}</p>

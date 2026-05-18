@@ -22,6 +22,15 @@ export default function DetailPelatihan() {
       color: 'text-green-400'
     },
     {
+      sesi: 'Sesi 4',
+      title: 'Jawaban Minitask Sesi 4',
+      format: 'Google Slides',
+      desc: 'Pendalaman analisis data dan teknik visualisasi untuk presentasi hasil temuan.',
+      link: 'https://docs.google.com/presentation/d/17slQgiU7jyupbc2TEusuXP2aet_ZnYLg/edit?usp=sharing&ouid=106810007812957132184&rtpof=true&sd=true',
+      icon: '📽️',
+      color: 'text-yellow-400'
+    },
+    {
       sesi: 'Sesi 5',
       title: 'Jawaban Minitask Sesi 5',
       format: 'Google Sheets',
@@ -29,6 +38,15 @@ export default function DetailPelatihan() {
       link: 'https://docs.google.com/spreadsheets/d/1UyXbCwJGWwOkWiaeC7_5f1IyezmyEQa-VEt6ePy1xyY/edit?usp=sharing',
       icon: '📈',
       color: 'text-green-400'
+    },
+    {
+      sesi: 'Sesi 6',
+      title: 'Jawaban Minitask Sesi 6',
+      format: 'Google Slides',
+      desc: 'Praktik pembuatan presentasi data dan komunikasi insight untuk stakeholder.',
+      link: 'https://docs.google.com/presentation/d/1nT-FiUp3JzR76pGAdk1mnN1oZ98_184k/edit?usp=sharing&ouid=106810007812957132184&rtpof=true&sd=true',
+      icon: '📑',
+      color: 'text-yellow-400'
     },
     {
       sesi: 'Sesi 7',
@@ -54,6 +72,60 @@ export default function DetailPelatihan() {
       format: 'Google Slides',
       desc: 'Penyusunan deck presentasi akhir dan penyampaian hasil analisis secara efektif.',
       link: 'https://docs.google.com/presentation/d/1Qx9jYdw-0Ps0cPBuOj3-HmlZx6jNtZbX/edit?usp=sharing&ouid=106810007812957132184&rtpof=true&sd=true',
+      icon: '📑',
+      color: 'text-yellow-400'
+    },
+    {
+      sesi: 'Sesi 10',
+      title: 'Jawaban Minitask Sesi 10',
+      format: 'Google Slides',
+      desc: 'Analisis mendalam dan pengembangan strategi berdasarkan data untuk presentasi bisnis.',
+      link: 'https://docs.google.com/presentation/d/1gjWBl7LGCWEZqZbMo8YA0XKgw_vscO-T/edit?usp=sharing&ouid=106810007812957132184&rtpof=true&sd=true',
+      icon: '📽️',
+      color: 'text-yellow-400'
+    },
+    {
+      sesi: 'Sesi 11',
+      title: 'Jawaban Minitask Sesi 11',
+      format: 'Google Slides',
+      desc: 'Implementasi metrik bisnis dan analisis ROI dengan presentasi komprehensif.',
+      link: 'https://docs.google.com/presentation/d/1LU9IFUl-80kHNuTgIy5AEe7xhwkHJen3/edit?usp=sharing&ouid=106810007812957132184&rtpof=true&sd=true',
+      icon: '📑',
+      color: 'text-yellow-400'
+    },
+    {
+      sesi: 'Sesi 12',
+      title: 'Jawaban Minitask Sesi 12',
+      format: 'Google Slides',
+      desc: 'Analisis prediktif dan forecasting untuk perencanaan strategis dengan visualisasi data.',
+      link: 'https://docs.google.com/presentation/d/1s4lyEtEObbF3iWAI76dgPwtUvKtLlnM_/edit?usp=sharing&ouid=106810007812957132184&rtpof=true&sd=true',
+      icon: '📽️',
+      color: 'text-yellow-400'
+    },
+    {
+      sesi: 'Sesi 13',
+      title: 'Jawaban Minitask Sesi 13',
+      format: 'Google Colab',
+      desc: 'Praktik pemrograman Python untuk analisis data dan machine learning exploration.',
+      link: 'https://colab.research.google.com/drive/1MCzexf9-mNgSchC0Cjswssg6jbyek2Wq?usp=sharing',
+      icon: '💻',
+      color: 'text-blue-400'
+    },
+    {
+      sesi: 'Sesi 14',
+      title: 'Jawaban Minitask Sesi 14',
+      format: 'Google Colab',
+      desc: 'Pengembangan model machine learning dan evaluasi performa dengan Python.',
+      link: 'https://colab.research.google.com/drive/154fborKqmsg7ReYiKcbAgOUKCQBIm9lw?usp=sharing',
+      icon: '💻',
+      color: 'text-blue-400'
+    },
+    {
+      sesi: 'Sesi 15',
+      title: 'Jawaban Minitask Sesi 15',
+      format: 'Google Slides',
+      desc: 'Presentasi akhir project dengan kesimpulan dan rekomendasi berbasis data science.',
+      link: 'https://docs.google.com/presentation/d/1nFbV2cxHxwzp1y9i9eWfz3GToz5-6tms/edit?usp=sharing&ouid=106810007812957132184&rtpof=true&sd=true',
       icon: '📑',
       color: 'text-yellow-400'
     }

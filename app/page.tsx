@@ -23,7 +23,7 @@ export default function DarkPortfolio() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-300 font-sans selection:bg-blue-500/30">
+    <main className="min-h-screen bg-slate-950 text-slate-300 font-sans selection:bg-blue-500/30 w-full max-w-[100vw] overflow-x-hidden relative flex flex-col">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -102,92 +102,118 @@ export default function DarkPortfolio() {
         </AnimatePresence>
       </nav>
 
-      {/* --- HERO SECTION REDESIGN --- */}
-      <section id="about" className="relative max-w-5xl mx-auto px-6 pt-32 pb-18 lg:pt-40 lg:pb-32">
-        {/* Dekorasi Cahaya Latar Belakang */}
-        <div className="absolute top-20 left-0 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
-        <div className="absolute bottom-0 right-10 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+      {/* Kontainer Khusus Background - Sangat ketat mengunci elemen blur agar tidak merusak lebar halaman */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] min-w-[300px] min-h-[300px] max-w-[600px] max-h-[600px] bg-blue-600/10 rounded-full blur-[100px] animate-pulse duration-[8000ms]"></div>
+        <div className="absolute top-[20%] right-[-10%] w-[40vw] h-[40vw] min-w-[300px] min-h-[300px] max-w-[500px] max-h-[500px] bg-emerald-600/5 rounded-full blur-[100px] animate-pulse duration-[10000ms]"></div>
+      </div>
 
-        <div className="flex flex-col-reverse md:flex-row items-center gap-16 md:gap-12 relative z-10">
-          {/* Teks Konten */}
-          <div className="flex-1 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 border border-slate-800 text-xs font-medium mb-8 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
-              <span className="text-slate-300 tracking-wide uppercase">Tersedia untuk Kolaborasi</span>
-            </div>
-
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-              Hi, Saya <br className="hidden md:block" />
-              <span
-                className="text-4xl md:text-5xl lg:text-6xl block w-fit pb-1"
-                style={{
-                  background: "linear-gradient(to right, #60a5fa, #22d3ee)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  color: "#60a5fa",
-                }}
-              >
-                Digra Murtaza Izham
-              </span>
-            </h1>
-
-            <p className="text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed mb-10 mx-auto md:mx-0">
-              Lulusan S1 Ilmu Komputer Universitas Negeri Jakarta. Berpengalaman dalam operasional{" "}
-              <span className="text-blue-400 font-semibold">IT Support</span> serta pengembangan perangkat lunak web dan mobile. Menguasai ekosistem{" "}
-              <span className="text-blue-400 font-semibold">Laravel, PHP, Python, dan MySQL</span> dengan target karier sebagai{" "}
-              <span className="text-blue-400 font-semibold">Web Developer</span> maupun <span className="text-blue-400 font-semibold">Data Analyst</span>.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-              <a
-                href="mailto:digraizham18@gmail.com"
-                className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2 group"
-              >
-                Hubungi Saya <span className="group-hover:translate-x-1 transition-transform">→</span>
-              </a>
-
-              <div className="w-full sm:w-auto flex items-center justify-center gap-3 px-6 py-3.5 bg-slate-900/80 backdrop-blur border border-slate-800 rounded-xl hover:border-slate-700 transition-colors">
-                <span className="text-xl">🎓</span>
-                <div className="text-left">
-                  <span className="block text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-0.5">S1 Ilmu Komputer</span>
-                  <span className="block text-sm font-medium text-slate-300 italic">IPK 3.62 / 4.00</span>
-                </div>
-              </div>
-            </div>
+      {/* Hero Section */}
+      <section className="relative w-full max-w-6xl mx-auto px-6 min-h-[100dvh] flex flex-col-reverse md:flex-row items-center justify-center md:justify-between gap-10 z-10 pt-24 md:pt-0 pb-16">
+        {/* Teks & Call to Action (CTA) */}
+        <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left space-y-6">
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/60 border border-slate-800 text-slate-400 text-xs font-mono tracking-wide backdrop-blur-md shadow-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            Available for Work
           </div>
 
-          {/* Foto Profil dengan Bingkai Modern */}
-          <div className="flex-shrink-0 relative group">
-            <div className="absolute -inset-3 bg-gradient-to-tr from-blue-600 to-cyan-500 rounded-[2rem] blur-2xl opacity-20 group-hover:opacity-40 transition duration-700"></div>
+          {/* Main Headline */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            Hi, I'm <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400">Digra Murtaza Izham</span>
+          </h1>
 
-            <div className="relative w-40 h-60 md:w-40 md:h-60 lg:w-64 lg:h-96 rounded-[2rem] overflow-hidden border border-slate-700/50 bg-slate-900 p-2 shadow-2xl transition-transform duration-500 group-hover:-translate-y-2">
-              <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden bg-slate-800">
-                <Image
-                  src="/34.jpeg"
-                  alt="Digra Murtaza Izham"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  priority
-                />
-              </div>
+          {/* Subheadline */}
+          <p className="text-sm sm:text-base text-slate-400 max-w-xl leading-relaxed">
+            Fresh Graduate S1 Ilmu Komputer dari Universitas Negeri Jakarta. Menggabungkan keahlian{" "}
+            <strong className="text-slate-200 font-medium">Data Analysis</strong> dan <strong className="text-slate-200 font-medium">Web Development</strong>{" "}
+            untuk menciptakan solusi digital yang efisien dan berbasis data.
+          </p>
+
+          {/* Action Buttons */}
+          <div className="pt-2 w-full sm:w-auto">
+            <Link
+              href="/proyek"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white text-sm font-semibold transition-all duration-300 shadow-[0_4px_20px_rgba(37,99,235,0.25)] hover:shadow-[0_4px_30px_rgba(37,99,235,0.4)] hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
+            >
+              Lihat Proyek
+              <span className="group-hover:translate-x-1.5 transition-transform duration-300 text-base">→</span>
+            </Link>
+          </div>
+        </div>
+
+        {/* Visual Interaktif (Interactive Code Window) */}
+        <div className="flex-1 w-full max-w-md relative group">
+          {/* Ambient Glow di belakang window */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-2xl blur-xl opacity-10 group-hover:opacity-25 transition-opacity duration-700 pointer-events-none z-0"></div>
+
+          {/* Mockup Window */}
+          <div className="relative z-10 p-5 rounded-2xl bg-slate-950/90 border border-slate-900 shadow-xl backdrop-blur-xl transform transition-all duration-500 hover:rotate-0 md:rotate-1 hover:scale-[1.02]">
+            {/* Window Header */}
+            <div className="flex items-center gap-2 mb-4 border-b border-slate-900 pb-3">
+              <div className="w-2.5 h-2.5 rounded-full bg-rose-500/80"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></div>
+              <div className="ml-2 text-[11px] font-mono text-slate-600">profile.ts</div>
             </div>
+
+            {/* Code Content */}
+            <pre className="text-xs sm:text-sm font-mono text-slate-400 overflow-x-auto leading-relaxed">
+              <code>
+                <span className="text-purple-400">const</span> <span className="text-blue-400">developer</span> = {"{"}
+                <br />
+                &nbsp;&nbsp;name: <span className="text-emerald-400">'Digra Murtaza'</span>,
+                <br />
+                &nbsp;&nbsp;role: <span className="text-emerald-400">'Data Analyst & Web Dev'</span>,
+                <br />
+                &nbsp;&nbsp;degree: <span className="text-emerald-400">'S1 Ilmu Komputer, UNJ'</span>,
+                <br />
+                &nbsp;&nbsp;stack: [<span className="text-emerald-400">'SQL'</span>, <span className="text-emerald-400">'Python'</span>,{" "}
+                <span className="text-emerald-400">'Laravel'</span>],
+                <br />
+                &nbsp;&nbsp;location: <span className="text-emerald-400">'Bogor, ID'</span>,
+                <br />
+                {"}"};
+              </code>
+            </pre>
           </div>
         </div>
       </section>
-      {/* --- END HERO SECTION --- */}
 
-      {/* Tech Stack Grid */}
-      <section className="max-w-5xl mx-auto px-6 py-3">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* Section: Tech Stack Grid */}
+      <section className="relative w-full max-w-6xl mx-auto px-6 py-16 z-10">
+        {/* Header Section */}
+        <div className="flex items-center gap-4 mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight bg-clip-text bg-gradient-to-r from-white to-slate-400">Tech Stack & Tools</h2>
+          <div className="h-px flex-1 bg-gradient-to-r from-slate-800 via-slate-900 to-transparent hidden md:block"></div>
+        </div>
+
+        {/* Grid System */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
           {[
-            { label: "Backend & Frontend", value: "Laravel (Fullstack)" },
-            { label: "Database", value: "MySQL" },
-            { label: "Programming", value: "PHP, Python" },
-            { label: "Mobile Framework", value: "Flutter" },
-          ].map((item, i) => (
-            <div key={i} className="p-4 rounded-xl bg-slate-900/50 border border-slate-800">
-              <p className="text-[10px] text-slate-500 mb-1 uppercase tracking-[0.2em]">{item.label}</p>
-              <p className="text-white font-medium text-sm">{item.value}</p>
+            { name: "Python", url: "https://cdn.simpleicons.org/python/3776AB" },
+            { name: "Laravel", url: "https://cdn.simpleicons.org/laravel/FF2D20" },
+            { name: "SQL", url: "https://cdn.simpleicons.org/mysql/4169E1" },
+            { name: "HTML", url: "https://cdn.simpleicons.org/html5/61DAFB" },
+            { name: "PHP", url: "https://cdn.simpleicons.org/php/white" },
+            { name: "Tailwind CSS", url: "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
+            { name: "Flutter", url: "https://cdn.simpleicons.org/flutter/02569B" },
+            { name: "JS", url: "https://cdn.simpleicons.org/javascript/34A853" },
+            { name: "Android Studio", url: "https://cdn.simpleicons.org/androidstudio/34A853" },
+            { name: "Jira", url: "https://cdn.simpleicons.org/jira/02569B" },
+          ].map((tool, index) => (
+            <div
+              key={index}
+              className="group relative p-6 rounded-2xl bg-slate-900/20 border border-slate-900 hover:border-slate-700 transition-all duration-300 flex flex-col items-center justify-center gap-4 backdrop-blur-sm hover:-translate-y-1 hover:shadow-lg hover:shadow-black/20"
+            >
+              <div className="w-16 h-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                <img src={tool.url} alt={tool.name} className="w-full h-full object-contain filter drop-shadow-md" />
+              </div>
+              <span className="text-xs font-mono text-slate-500 group-hover:text-slate-300 transition-colors">{tool.name}</span>
             </div>
           ))}
         </div>
@@ -249,37 +275,136 @@ export default function DarkPortfolio() {
         </div>
       </section>
 
-      {/* Projects Grid */}
-      <section id="projects" className="bg-slate-900/30 py-10 border-y border-slate-900">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="flex justify-between items-end mb-12">
-            <h2 className="text-3xl font-bold text-white flex items-center gap-4">
-              <span className="w-8 h-px bg-blue-500"></span> Pengalaman Proyek
+      {/* Section: Projects Carousel */}
+      <section id="proyek" className="relative w-full max-w-6xl mx-auto px-6 py-20 z-10">
+        {/* Header Section dengan Tombol Navigasi Carousel */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
+          <div className="flex items-center gap-4 flex-1">
+            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight bg-clip-text bg-gradient-to-r from-white to-slate-400">
+              Featured Projects
             </h2>
-            <Link href="/proyek" className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors group flex items-center gap-2">
-              Detail Proyek <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
+            <div className="h-px flex-1 bg-gradient-to-r from-slate-800 via-slate-900 to-transparent hidden sm:block"></div>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { title: "Telehealth UNJ", year: "2025", desc: "Sistem rekam medis neonatus berbasis web dengan Laravel.", tags: ["Laravel", "MySQL"] },
-              { title: "Collagen App", year: "2023", desc: "Aplikasi mobile e-commerce dan sosial media berbasis Android.", tags: ["Flutter", "Dart"] },
-              { title: "KingDesign", year: "2023", desc: "Platform profil bisnis dan transaksi jasa desain logo.", tags: ["PHP Native", "UI Design"] },
-            ].map((proj, i) => (
-              <div key={i} className="group p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 transition-all shadow-lg">
-                <div className="text-[10px] font-mono text-slate-500 mb-4 tracking-widest">{proj.year}</div>
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">{proj.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed mb-6">{proj.desc}</p>
-                <div className="flex gap-2">
-                  {proj.tags.map((tag) => (
-                    <span key={tag} className="text-[10px] px-2 py-1 bg-slate-800 rounded text-slate-300 border border-slate-700">
-                      {tag}
-                    </span>
-                  ))}
+
+          {/* Tombol Navigasi Kiri & Kanan */}
+          <div className="flex items-center gap-3 self-end sm:self-auto">
+            <button
+              onClick={() => scrollCarousel("left")}
+              aria-label="Geser ke kiri"
+              title="Proyek sebelumnya"
+              className="w-10 h-10 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 hover:border-slate-700 transition-all active:scale-95 shadow-lg select-none"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              onClick={() => scrollCarousel("right")}
+              aria-label="Geser ke kanan"
+              title="Proyek selanjutnya"
+              className="w-10 h-10 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 hover:border-slate-700 transition-all active:scale-95 shadow-lg select-none"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Jalur Kontainer Carousel */}
+        <div
+          ref={carouselRef}
+          className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        >
+          {[
+            {
+              title: "Sistem Telehealth UNJ",
+              role: "Fullstack Web Developer",
+              desc: "Modul Manajemen Rekam Medis Elektronik untuk Neonatus (NICU) guna memonitor data vital klinis pasien secara real-time.",
+              logo: "/Logo 1_1.svg",
+              hoverColor: "hover:border-blue-500/40 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)]",
+              glowEffect: "bg-blue-500/20",
+            },
+            {
+              title: "Collagen App",
+              role: "Frontend / UI Developer",
+              desc: "Aplikasi mobile hibrida berbasis Android yang menggabungkan fitur interaksi sosial media dan platform e-commerce terpadu.",
+              logo: "/image_3ed274.png",
+              hoverColor: "hover:border-emerald-500/40 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)]",
+              glowEffect: "bg-emerald-500/20",
+            },
+            {
+              title: "KingDesign",
+              role: "Web Developer & Planner",
+              desc: "Platform profil bisnis, direktori jasa desain grafis, dan pemrosesan transaksi. Berhasil mencapai Top 100 PMW Nasional.",
+              logo: "/image_3e6920.png",
+              hoverColor: "hover:border-amber-500/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.1)]",
+              glowEffect: "bg-amber-500/20",
+            },
+          ].map((project, index) => (
+            <div
+              key={index}
+              className={`w-full sm:w-[360px] flex-shrink-0 snap-start group relative p-6 md:p-8 rounded-[2rem] bg-slate-900/30 border border-slate-900 ${project.hoverColor} transition-all duration-500 flex flex-col justify-between backdrop-blur-md`}
+            >
+              <div>
+                {/* Frame Logo Box */}
+                <div className="w-16 h-16 mb-6 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center p-3 relative shadow-inner group-hover:scale-105 transition-transform duration-500 overflow-hidden">
+                  <div className={`absolute inset-0 opacity-10 blur-md ${project.glowEffect}`}></div>
+                  <Image src={project.logo} alt={project.title} width={48} height={48} className="w-full h-full object-contain relative z-10 drop-shadow-md" />
                 </div>
+
+                <h3 className="text-xl font-bold text-white mb-1 tracking-tight group-hover:text-slate-200 transition-colors">{project.title}</h3>
+                <p className="text-[11px] font-mono text-slate-500 mb-4 uppercase tracking-wider">{project.role}</p>
+                <p className="text-slate-400 text-sm leading-relaxed mb-8 group-hover:text-slate-300 transition-colors">{project.desc}</p>
               </div>
-            ))}
-          </div>
+
+              {/* Tombol Tautan Aksi (Hanya Detail) */}
+              <div className="flex items-center justify-between border-t border-slate-900/60 pt-5 mt-auto">
+                <span className="text-xs font-semibold text-slate-500 group-hover:text-slate-400 transition-colors">Explore Case Study</span>
+                <Link
+                  href={`/proyek#${project}`} 
+                  aria-label={`Buka detail studi kasus ${project.title}`}
+                  title="Lihat detail lengkap"
+                  className="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 hover:border-slate-600 hover:bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-all shadow-sm group-hover:translate-x-1"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -527,9 +652,9 @@ export default function DarkPortfolio() {
                   <p className="text-slate-400 text-sm font-medium flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-slate-600"></span>8 April 2026 — 29 Mei 2026
                   </p>
-                  <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-bold uppercase tracking-wider flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
-                    Ongoing Course
+                  <span className="px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-[10px] font-bold uppercase tracking-wider flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+                    Completed Bootcamp
                   </span>
                 </div>
               </div>
@@ -537,7 +662,12 @@ export default function DarkPortfolio() {
           </div>
 
           <div className="mt-8 grid md:grid-cols-1 gap-4 pt-6 border-t border-slate-800/50 text-slate-500 text-xs italic">
-            * Pelatihan intensif mencakup pengolahan data, visualisasi, dan pemecahan masalah berbasis data berskala penuh.
+            Program Bootcamp Data Analysis: Fullstack Intensive di MySkill ini membekali saya dengan kompetensi analitik end-to-end, mulai dari perumusan
+            business problem solving, pengolahan statistik, hingga manipulasi data berskala besar menggunakan kueri SQL tingkat lanjut. Melalui rangkaian studi
+            kasus dan tiga proyek akhir, saya berhasil mengasah kemampuan data wrangling menggunakan pustaka Python seperti Pandas serta perancangan visualisasi
+            data interaktif. Seluruh proses pembelajaran ini bermuara pada kemampuan menyusun business storytelling yang komprehensif untuk memberikan
+            rekomendasi strategis (data-driven), seperti upaya percepatan akuisisi pelanggan, taktik promosi akhir pekan, dan evaluasi profitabilitas
+            operasional bisnis.
           </div>
         </div>
       </section>
